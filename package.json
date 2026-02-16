@@ -10,13 +10,12 @@
   "scripts": {
     "devto": "node src/devto.js",
     "hashnode": "node src/hashnode.js",
-    "bluesky": "node/src/bluesky.js",
+    "bluesky": "node src/bluesky.js",
     "mastodon": "node src/mastodon.js",
     "all": "node src/index.js"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "node-fetch": "^3.3.2"
+    "dotenv": "^16.4.5"
   },
   "engines": {
     "node": ">=18"
@@ -28,7 +27,20 @@
     "bluesky",
     "mastodon",
     "open-source",
-    "automation"
+    "automation",
+    "content-promotion",
+    "social-media",
+    "developer-tools",
+    "cli"
   ],
-  "license": "MIT"
+  "author": "ozxc44",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozxc44/auto-promoter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ozxc44/auto-promoter/issues"
+  },
+  "homepage": "https://github.com/ozxc44/auto-promoter#readme"
 }
