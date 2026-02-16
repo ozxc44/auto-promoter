@@ -8,12 +8,15 @@ import { publishProjectAnnouncement as publishToDevTo } from './devto.js';
 import { publishProjectAnnouncement as publishToHashNode } from './hashnode.js';
 import { publishProjectAnnouncement as publishToBluesky } from './bluesky.js';
 import { publishProjectAnnouncement as publishToMastodon } from './mastodon.js';
+import { publishProjectAnnouncement as publishToDiscord } from './discord.js';
+import { getTemplate, getDefaultTemplate } from '../templates/index.js';
 
 const platforms = {
   devto: { name: 'Dev.to', fn: publishToDevTo, env: 'DEVTO_API_KEY' },
   hashnode: { name: 'Hashnode', fn: publishToHashNode, env: 'HASHNODE_API_KEY' },
   bluesky: { name: 'Bluesky', fn: publishToBluesky, env: 'BLUESKY_APP_PASSWORD' },
-  mastodon: { name: 'Mastodon', fn: publishToMastodon, env: 'MASTODON_ACCESS_TOKEN' }
+  mastodon: { name: 'Mastodon', fn: publishToMastodon, env: 'MASTODON_ACCESS_TOKEN' },
+  discord: { name: 'Discord', fn: publishToDiscord, env: 'DISCORD_WEBHOOK_URL' }
 };
 
 export async function promoteToAllPlatforms(config) {
@@ -60,6 +63,40 @@ export async function promoteToPlatform(platform, config) {
   return result;
 }
 
+/**
+ * Enhance config with template content
+ */
+function enhanceConfigWithTemplate(config) {
+  const { projectName } = config;
+
+  // Extract project name from URL if not provided
+  let nameForTemplate = projectName;
+  if (!nameForTemplate && config.projectUrl) {
+    nameForTemplate = config.projectUrl.split('/').pop();
+  }
+
+  // Get template
+  const template = getTemplate(nameForTemplate) || getDefaultTemplate();
+
+  // Enhance config with template content
+  const enhanced = { ...config };
+
+  if (template.devto && !enhanced.customContent) {
+    enhanced.devtoContent = template.devto;
+  }
+  if (template.bluesky && !enhanced.customContent) {
+    enhanced.blueskyContent = template.bluesky;
+  }
+  if (template.mastodon && !enhanced.customContent) {
+    enhanced.mastodonContent = template.mastodon;
+  }
+  if (template.discord && !enhanced.customContent) {
+    enhanced.discordContent = template.discord;
+  }
+
+  return enhanced;
+}
+
 // CLI
 if (import.meta.url === `file://${process.argv[1]}`) {
   const config = {
@@ -69,12 +106,15 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     tags: (process.env.PROJECT_TAGS || '').split(',').filter(Boolean)
   };
 
+  // Enhance with template content
+  const enhancedConfig = enhanceConfigWithTemplate(config);
+
   const targetPlatform = process.argv[2];
 
   if (targetPlatform && targetPlatform !== 'all') {
-    promoteToPlatform(targetPlatform, config).catch(console.error);
+    promoteToPlatform(targetPlatform, enhancedConfig).catch(console.error);
   } else {
-    promoteToAllPlatforms(config).then(results => {
+    promoteToAllPlatforms(enhancedConfig).then(results => {
       const success = results.filter(r => r.success).length;
       console.log(`\n📊 Summary: ${success}/${results.length} platforms succeeded`);
     }).catch(console.error);
