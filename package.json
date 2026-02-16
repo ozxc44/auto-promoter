@@ -1,0 +1,34 @@
+{
+  "name": "auto-promoter",
+  "version": "1.0.0",
+  "description": "Automated promotion tool for open source projects - publish to Dev.to, Hashnode, Bluesky, Mastodon",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "auto-promote": "./src/cli.js"
+  },
+  "scripts": {
+    "devto": "node src/devto.js",
+    "hashnode": "node src/hashnode.js",
+    "bluesky": "node/src/bluesky.js",
+    "mastodon": "node src/mastodon.js",
+    "all": "node src/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "promotion",
+    "devto",
+    "hashnode",
+    "bluesky",
+    "mastodon",
+    "open-source",
+    "automation"
+  ],
+  "license": "MIT"
+}
