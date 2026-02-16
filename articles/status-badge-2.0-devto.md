@@ -6,7 +6,7 @@
 
 ## 🌐 Live Demo & Code
 
-- **GitHub**: [status-badge-2](https://github.com/user/status-badge-2)
+- **GitHub**: [ozxc44/status-badge-2](https://github.com/ozxc44/status-badge-2)
 - **Live Demo**: Coming Soon
 - **Deploy Your Own**: One-click Cloudflare Workers deployment
 
@@ -49,7 +49,7 @@ The script fetches the current status from your Cloudflare Worker and updates th
 ### 1. Clone and Deploy
 
 ```bash
-git clone https://github.com/user/status-badge-2.git
+git clone https://github.com/ozxc44/status-badge-2.git
 cd status-badge-2
 npm install
 npm run deploy
@@ -93,13 +93,13 @@ MIT License - Free for personal and commercial use.
 
 ---
 
-*This post was automatically generated using [auto-promoter](https://github.com/user/auto-promoter)*
+*This post was automatically generated using [auto-promoter](https://github.com/ozxc44/auto-promoter)*
 
 ## 🔗 Links
 
-- [GitHub Repository](https://github.com/user/status-badge-2)
-- [Documentation](https://github.com/user/status-badge-2#readme)
-- [Issues](https://github.com/user/status-badge-2/issues)
+- [GitHub Repository](https://github.com/ozxc44/status-badge-2)
+- [Documentation](https://github.com/ozxc44/status-badge-2#readme)
+- [Issues](https://github.com/ozxc44/status-badge-2/issues)
 
 ---
 
