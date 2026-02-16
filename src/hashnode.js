@@ -3,7 +3,7 @@
  * https://docs.hashnode.com/quickstart/introduction
  */
 
-const HASHNODE GraphQL = 'https://gql.hashnode.com';
+const HASHNODE_GRAPHQL = 'https://gql.hashnode.com';
 
 export async function postToHashNode(post, apiKey, publicationId) {
   const query = `
