@@ -1,5 +1,9 @@
 # 📢 Auto-Promoter
 
+[![npm version](https://badge.fury.io/js/auto-promoter.svg)](https://www.npmjs.com/package/auto-promoter)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/ozxc44/auto-promoter?style=social)](https://github.com/ozxc44/auto-promoter)
+
 > **Automated promotion tool for open source projects**
 > Publish your projects to Dev.to, Hashnode, Bluesky, and Mastodon with a single command.
 
